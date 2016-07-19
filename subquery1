@@ -1,0 +1,7 @@
+SELECT origin, id,
+	(SELECT COUNT(*)
+  FROM flights AS f
+   WHERE f.id < i.id
+   AND f.origin = i.origin) + 1
+   AS flight_sequence_number
+   FROM flights as i;
